@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <title>Assignment-1</title>
+</head>
+
+<body>
+    <div>Use checkboxes to select object(s) to control. <br />
+        Use ARROW KEYS to translate ------- WS to scale ------- AD to rotate.
+    </div>
+    <canvas id="glcanvas" width="800" height="600"></canvas>
+    <input type="checkbox" id="checkB">B
+    <input type="checkbox" id="checkN">N
+    <br />
+    <div>
+        R 0<input type="range" id="redSlider" min="0" max="255" step="1"><output id="redOut">127</output><br />
+        G 0<input type="range" id="greenSlider" min="0" max="255" step="1"><output id="greenOut">127</output><br />
+        B 0<input type="range" id="blueSlider" min="0" max="255" step="1"><output id="blueOut">127</output><br />
+    </div>
+
+</body>
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+    precision mediump float;
+    attribute vec2 vPosition;
+    uniform mat4 transMatrix;
+    void main() {
+        gl_Position = transMatrix * vec4(vPosition, 0.0, 1.0);
+    }
+</script>
+
+
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+    precision mediump float;
+    uniform vec4 fColor;
+    void main() {
+        gl_FragColor = fColor;
+    }
+</script>
+
+<script src="utils/initShaders.js"></script>
+<script src="utils/MV.js"></script>
+<script src="utils/webgl-utils.js"></script>
+<script src="assignment.js"></script>
+
+
+</html>
